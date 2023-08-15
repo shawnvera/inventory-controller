@@ -1,4 +1,6 @@
 from django.db import models
+# from django.contrib.auth.models import AbstractUser
+# from django.utils import timezone
 
 # Create your models here.
 class User(models.Model):
@@ -24,3 +26,9 @@ class Product(models.Model):
     quantity = models.IntegerField
     user_id = models.ManyToManyField(User)
     customer_id = models.ManyToManyField(Customer)
+
+# added during session with Justin concerning 
+# class CustomUser(AbstractUser):
+    
+#     def __str__(self):
+#         return self.username
