@@ -7,12 +7,12 @@ class CustomUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True
     )
-    username = serializers.CharField()
+    # username = serializers.CharField()
     password = serializers.CharField(min_length=8, write_only=True)
     
     class Meta:
         model = User
-        fields = ('name', 'email', 'email', 'password', 'phone', 'age', 'status')
+        fields = '__all__'
         extra_kwargs = {'password': {'write_only': True}}
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -25,10 +25,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ['id', 'name', 'description', 'addresss', 'notes', 'logo', 'creation_date']
+        fields = '__all__'
 
 
-class ProductSerializer(models.Model):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'quantity']
+        fields = '__all__'

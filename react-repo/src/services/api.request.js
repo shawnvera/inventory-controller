@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import authHeader from './auth.headers';
 import { API_URL, REFRESH_ENDPOINT } from './auth.constants';
 
@@ -13,7 +13,7 @@ client.interceptors.response.use(
   response => response,
   error => {
     const originalRequest = error.config;
-
+    console.log(response);
     // Prevent infinite loops
     if (error.response.status === 401 && originalRequest.url === API_URL + REFRESH_ENDPOINT) {
       window.location.href = '/login/';

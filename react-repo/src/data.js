@@ -1,14 +1,17 @@
 import axios from "axios";
+import useState from 'react';
 
 export default async function getData() {
 
-    let response = await axios.get(`127.0.0.1:8000`);
+    let response = await axios.get(`http://127.0.0.1:8000/product/`);
     console.log(response);
+    // response.get('?_limit=10').then((response) => {
+    //     const [state, setState] = useState(initialState);
+    //     setState(response.data);
     return response.data;
-}
+    // });
+};
 
-useEffect(() => {
-    response.get('?_limit=10').then((response) => {
-        setPosts(response.data);
-    });
-}, []);
+// useEffect(() => {
+//     getData();
+// }, []);
