@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from rest_framework_simplejwt import views as jwt_views
 from rest_framework import routers
 from inventory import views
-from api import urls
+# from api import urls
 
 router = routers.DefaultRouter()
 router.register(r'inventory', views.ProductViewSet)
@@ -19,6 +19,6 @@ urlpatterns = [
     # path('user/login/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
     # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     # path('api-auth/', include('rest_framework.urls')),
-    # path('inventory', include('inventory.urls')
+    # path('inventory', include('inventory.urls')),
     path('', include(router.urls)),
 ]
