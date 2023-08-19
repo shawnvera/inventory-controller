@@ -1,42 +1,37 @@
-import React, {
-    createContext,
-    useReducer,
-    useContext,
-    useEffect,
-} from 'react';
+'use client'
 
-import jwtDecode from 'jwt-decode'
+import { createContext, useReducer, useContext } from 'react';
 
-let user;
-
-if (typeof window !== 'undefined') {
-    user = JSON.parse(localStorage.getItem('user'))
-}
-
+// Define the initial state
 const initialState = {
-    currentUser: user ? jwtDecode(user.access) : null,
-    currentUserToken: user ? user.access : null
+  user: null,
+};
+
+// Create a context object
+const GlobalStateContext = createContext();
+
+// Reducer function to handle state changes
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+    default:
+      return state;
+  }
 }
 
-const GlobalStateContext = createContext(initialState);
-const DispatchStateContext = createContext(undefined)
+// Provider component to wrap the app
+export function GlobalStateProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-export const GlobalProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(
-        (state, newValue) => ({ ...state, ...newValue }),
-        initialState
-    );
-
-    return (
-        <GlobalStateContext.Provider value={state}>
-            <DispatchStateContext.Provider value={dispatch}>
-                {children}
-            </DispatchStateContext.Provider>
-        </GlobalStateContext.Provider>
-    )
+  return (
+    <GlobalStateContext.Provider value={{ state, dispatch }}>
+      {children}
+    </GlobalStateContext.Provider>
+  );
 }
 
-export const useGlobalState = () => [
-    useContext(GlobalStateContext),
-    useContext(DispatchStateContext)
-];
+// Custom hook to use the global state
+export function useGlobalState() {
+  return useContext(GlobalStateContext);
+}
