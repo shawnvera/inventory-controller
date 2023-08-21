@@ -24,7 +24,7 @@ export default function ProductInfo() {
               <div key={Date.now} className="container-fluid border shadow-md bg-body-tertiary rounded text-center">
                 <div className="row border border-dark">
                   <div className="col-md-4 border border-dark">{item.name}</div>
-                  <div className="col-md-4 border border-dark ">{item.quantity}</div>
+                  <div className="col-md-4 border border-dark">{item.quantity}</div>
                   <div className="col-md-4 border border-dark">{item.description}</div>
                 </div>
               </div>
