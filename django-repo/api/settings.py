@@ -199,4 +199,4 @@ STATIC_ROOT = "static"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = []
 
-# AUTH_USER_MODEL="inventory.User" 
+AUTH_USER_MODEL="inventory.CustomUser" 

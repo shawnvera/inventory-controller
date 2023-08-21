@@ -29,16 +29,9 @@ from rest_framework import routers
 # router.register(r'customer', views.CustomerViewSet)
 
 urlpatterns = [
-    path('', include('inventory.urls')),
+    path('api/', include('inventory.urls')),
     path('admin/', admin.site.urls),
-    # path('user/signup/', UserCreate.as_view(), name="create_user"),
-    # path('users/<int:pk>/', UserDetail.as_view(), name="get_user_details"),
-    # path('user/login/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
-    # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    # path('api/', include('api.urls')),
-    path('api-auth/', include('rest_framework.urls')),
-  
-]
+    ]
 
 # Add to the bottom of the urls.py in the project directory.
 
