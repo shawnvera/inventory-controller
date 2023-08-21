@@ -6,7 +6,7 @@ import GetCustomerData from '../services/DataCustomers';
 
 export default function NavBar() {
     const [state, setState] = useState([]);
-
+    function handleEvent() {
     useEffect(() => {
         const fetchData = async () => {
           const data = await GetCustomerData();
@@ -15,6 +15,7 @@ export default function NavBar() {
         fetchData();
         return () => { }
       }, [])
+    }
 
     return (
         <>
@@ -41,7 +42,7 @@ export default function NavBar() {
 
                             return (
                                 <>
-                                    <Dropdown.Item href="#">{item.name}</Dropdown.Item>
+                                    <Dropdown.Item as="button" onClick={handleEvent}>{item.name}</Dropdown.Item>
                                 </>
                             )
                         })
@@ -49,7 +50,7 @@ export default function NavBar() {
                 </Dropdown.Menu >
             </Dropdown>
 
-            <div className="d-grid gap-2 d-md-block">
+            <div className="d-grid gap-2 d-md-block align-end">
                 <button className="btn btn-primary" type="button">Button</button>
             </div>
         </>
