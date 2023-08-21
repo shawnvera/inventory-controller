@@ -30,7 +30,7 @@ from rest_framework import routers
 
 urlpatterns = [
     path('api/', include('inventory.urls')),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     ]
 
 # Add to the bottom of the urls.py in the project directory.
