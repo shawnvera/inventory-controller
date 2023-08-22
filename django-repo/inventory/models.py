@@ -18,8 +18,6 @@ class CustomUser(AbstractUser):
         return self.username
         
 
-
-
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
@@ -29,11 +27,8 @@ class Customer(models.Model):
     # 0ne to one reference possible change many to OneToOneField
     user_id = models.OneToOneField('User', on_delete=models.CASCADE)
 
-
 class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
-    quantity = models.IntegerField(default=None)
-    user_id = models.ManyToManyField('User')
-    customer_id = models.ManyToManyField('Customer')
-
+    quantity = models.IntegerField(default=0)
+    customer_id = models.OneToOneField('Customer', default=None, on_delete=models.CASCADE)

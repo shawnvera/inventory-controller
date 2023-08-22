@@ -79,7 +79,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 
 # Application definition
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -199,4 +199,4 @@ STATIC_ROOT = "static"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = []
 
-AUTH_USER_MODEL="inventory.CustomUser" 
+AUTH_USER_MODEL='inventory.CustomUser' 
