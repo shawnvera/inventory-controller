@@ -37,7 +37,7 @@ export default function ProductInfo() {
               </>
               )
                 })
-              : <p>works</p>
+              : <p>Please select a customer.</p>
                 }
             </>
           )
