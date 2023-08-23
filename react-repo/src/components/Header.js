@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 
 
 function Header() {
-  // const { state, dispatch } = useGlobalState();
 
   return (
     <div>
