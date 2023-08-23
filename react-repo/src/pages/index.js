@@ -9,30 +9,30 @@ import ProductInfo from '../components/ProductInfo';
 import Header from '../components/Header';
 import Buttons from '../components/Buttons';
 import NavBar from '../components/Navbar';
+import LoginButton from "../components/LoginButton";
 
 export default function Page() {
-//   useEffect(() => {
-//     require("bootstrap/dist/js/bootstrap.bundle.min.js");
-// }, []);
-  
+
   return (
-    
+
     // <MyApp>
-<>
+    <>
       <div className="container-flex">
         <Header />
-        <NavBar />
-        <Buttons />
-        <ProductInfo />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <LoginButton />
+        {/* <NavBar /> */}
+        {/* <Buttons /> */}
+        {/* <ProductInfo /> */}
       </div>
 
-</>
-      // </MyApp>
-    
-)}
-// useEffect(() => {
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render( 
-//     <ProductInfo />
-// )
-// });
+    </>
+    // </MyApp>
+
+  )
+}
