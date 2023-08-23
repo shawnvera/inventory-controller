@@ -8,16 +8,16 @@ import Header from '../../components/Header';
 function Page() {
     const router = useRouter();
 
-    const { state, dispatch } = useGlobalState("");
+    const { state, dispatch } = useGlobalState();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
 
     function handleLogin(e) {
         e.preventDefault();
-        // console.log(email.current.value , password.current.value , "HERE")
         authService
-            .login(email, password)
+            .login(email, password, username)
             .then(async (resp) => {
                 console.log(resp)
                 let data = jwtDecode(resp.access)
@@ -38,6 +38,17 @@ function Page() {
                     onSubmit={handleLogin}
                     className='mx-auto my-auto border-2 bg-mtgray'
                 >
+                        <div className='flex justify-between m-2 items-center space-x-2'>
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            className='border'
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
                     <div className='flex justify-between m-2 items-center space-x-2'>
                         <label htmlFor="email">Email:</label>
                         <input

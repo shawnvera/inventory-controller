@@ -23,50 +23,56 @@ export default function ProductInfo() {
 
           return (
             <>
-             <ListGroup as="ol" numbered>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
-      <ListGroup.Item
-        as="li"
-        className="d-flex justify-content-between align-items-start"
-      >
-        <div className="ms-2 me-auto">
-          <div className="fw-bold">Subheading</div>
-          Cras justo odio
-        </div>
-        <Badge bg="primary" pill>
-          14
-        </Badge>
-      </ListGroup.Item>
-    </ListGroup>
-  );
-             
-             
-             
-             
-             
+              <ListGroup as="ol" numbered>
+                <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
+                  <div className="ms-2 me-auto">
+                    <div className="fw-bold">{item.name}</div>
+                    {item.description}
+                  </div>
+                  <Badge bg="primary" pill>
+                    {item.quantity}
+                  </Badge>
+                </ListGroup.Item>
+                </ListGroup>
+              </>
+              )
+                })
+              : <p>works</p>
+                }
+            </>
+          )
+        }
+
+                {/* <ListGroup.Item
+                  as="li"
+                  className="d-flex justify-content-between align-items-start"
+                >
+                  <div className="ms-2 me-auto">
+                    <div className="fw-bold">Subheading</div>
+                    Cras justo odio
+                  </div>
+                  <Badge bg="primary" pill>
+                    14
+                  </Badge>
+                </ListGroup.Item>
+                <ListGroup.Item
+                  as="li"
+                  className="d-flex justify-content-between align-items-start"
+                >
+                  <div className="ms-2 me-auto">
+                    <div className="fw-bold">Subheading</div>
+                    Cras justo odio
+                  </div>
+                  <Badge bg="primary" pill>
+                    14
+                  </Badge>
+                </ListGroup.Item>
+              </ListGroup> */}
+
+
+
+
+
               {/* <div key={Date.now} className="container-fluid border shadow-md bg-body-tertiary rounded text-center">
                 <div className="row border border-dark">
                   <div className="col-md-4 border border-dark">{item.name}</div>
@@ -74,14 +80,6 @@ export default function ProductInfo() {
                   <div className="col-md-4 border border-dark">{item.description}</div>
                 </div>
               </div> */}
-            </>
-          )
-        })
-        : <p>works</p>
-      }
-    </>
-  )
-}
 
 
 //   <div>

@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { useGlobalState } from "../../context/GlobalState";
 
 function Register() {
-  const [state, dispatch] = useGlobalState();
+  const {state, dispatch} = useGlobalState();
   const router = useRouter();
   const [user, setUser] = useState({
-    password: "",
+    username: "",
     passwordConf: "",
     firstName: "",
     lastName: "",
@@ -15,6 +15,7 @@ function Register() {
   });
 
   const handleChange = (key, value) => {
+
     setUser({
       ...user,
       [key]: value,
@@ -35,6 +36,18 @@ function Register() {
     <div className="w-screen h-screen">
       <div className="flex">
         <form className="mx-auto border-2 bg-mtgray" onSubmit={handleRegister}>
+        
+        <div className="flex justify-between m-2 items-center space-x-2">
+            <label htmlFor="username">Username:</label>
+            <input
+              className="border"
+              type="text"
+              id="username"
+              required
+              onChange={(e) => handleChange("username", e.target.value)}
+            />
+          </div>
+          
           <div className="flex justify-between m-2 items-center space-x-2">
             <label htmlFor="firstName">First Name:</label>
             <input
