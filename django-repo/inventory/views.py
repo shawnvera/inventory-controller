@@ -29,13 +29,13 @@ class ProductFilteredViewSet(generics.ListAPIView):
 
     def get_queryset(self):
         """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
+        Optionally restricts the returned products to a given user,
+        by filtering against a `cust_id` query parameter in the URL.
         """
         queryset = Product.objects.all()
-        username = self.request.query_params.get('username')
-        if username is not None:
-            queryset = queryset.filter(product__username=username)
+        cust_id = self.request.query_params.get('cust_id')
+        if cust_id is not None:
+            queryset = queryset.filter(product__cust_id=cust_id)
         return queryset
 
 class UserCreate(APIView):
