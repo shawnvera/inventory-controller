@@ -3,18 +3,29 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import GetCustomerData from '../services/DataCustomers';
+import Page from '../pages/login/index'
+import Button from 'react-bootstrap/Button';
 
 export default function NavBar() {
     const [state, setState] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
-          const data = await GetCustomerData();
-          setState(data);
+            const data = await GetCustomerData();
+            setState(data);
         }
         fetchData();
         return () => { }
-      }, [])
+    }, [])
+
+    function handleEvent() {
+        Page();
+
+    }
+
+    function handleAuthEvent(e) {
+
+
+    }
 
     return (
         <>
@@ -26,14 +37,14 @@ export default function NavBar() {
             <br />
             <Navbar className="bg-body-tertiary">
                 <Container>
-                    <Navbar.Brand>Select a Customer ID from the dropdown box.</Navbar.Brand>
+                    <Navbar.Brand>Select a Customer from the dropdown box.</Navbar.Brand>
                 </Container>
             </Navbar>
             <br />
 
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Customer ID
+                    Customer
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     {state.length > 0 ?
@@ -41,42 +52,18 @@ export default function NavBar() {
 
                             return (
                                 <>
-                                    <Dropdown.Item href="#">{item.name}</Dropdown.Item>
+                                    <Dropdown.Item as="button" onClick={handleEvent}>{item.name}</Dropdown.Item>
                                 </>
                             )
                         })
-                    : <p>works</p> }
+                        : <p>works</p>}
                 </Dropdown.Menu >
             </Dropdown>
+            <br />
 
-            <div className="d-grid gap-2 d-md-block">
-                <button className="btn btn-primary" type="button">Button</button>
-            </div>
+            <Button href="http://localhost:3000/login">
+                LOGIN
+                </Button>
         </>
-)
+    )
 }
-
-
-
-
-
-
-
-
-
-{/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">Select a customer or login.</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Customer ID
-                        </button>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="http://127.0.0.1:8000/customer/">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div> */}

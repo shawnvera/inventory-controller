@@ -88,7 +88,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'inventory',
+    'inventory.apps.InventoryConfig',
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -199,4 +199,4 @@ STATIC_ROOT = "static"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = []
 
-AUTH_USER_MODEL="inventory.CustomUser" 
+AUTH_USER_MODEL='inventory.CustomUser' 

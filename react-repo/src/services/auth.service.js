@@ -5,13 +5,15 @@ import {
   } from './auth.constants';
   
   import request from './api.request';
+import { constants } from 'buffer';
   
   class AuthService {
     constructor() {
       this.login = this.login.bind(this);
     }
   
-    async login(email, password) {
+    async login(email, password, username) {
+      
       try {
         const response = await request({
           url: LOGIN_ENDPOINT,
@@ -19,6 +21,7 @@ import {
           data: {
             email,
             password,
+            username,
           },
         });
   
@@ -56,7 +59,7 @@ import {
           },
         });
   
-        await this.login(email, password);
+        await this.login(email, password, username);
       } catch (error) {
         return error.response;
       }
