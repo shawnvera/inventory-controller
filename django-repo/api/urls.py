@@ -6,7 +6,7 @@ from rest_framework_simplejwt import views as jwt_views
 from rest_framework import routers
 
 urlpatterns = [
-    path('api/', include('inventory.urls')),
+    path('', include('inventory.urls')),
     path('admin/', admin.site.urls),
     ]
 
