@@ -22,10 +22,10 @@ class Customer(models.Model):
     notes = models.CharField(max_length=140)
     creation_date = models.DateTimeField(default=None, null = True)
     # 0ne to one reference possible change many to OneToOneField
-    user = models.OneToOneField('User', on_delete=models.CASCADE)
+    customuser = models.ManyToManyField('CustomUser', default=None)
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     quantity = models.IntegerField(default=0)
-    customer = models.ForeignKey('Customer', default=None, on_delete=models.CASCADE)
+    customer = models.ManyToManyField('Customer', default=None)

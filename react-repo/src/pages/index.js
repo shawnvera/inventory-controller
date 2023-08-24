@@ -12,9 +12,7 @@ import NavBar from '../components/Navbar';
 import LoginButton from "../components/LoginButton";
 
 export default function Page() {
-
   return (
-
     // <MyApp>
     <>
       <div className="container-flex">
@@ -26,13 +24,9 @@ export default function Page() {
         <br />
 
         <LoginButton />
-        {/* <NavBar /> */}
-        {/* <Buttons /> */}
-        {/* <ProductInfo /> */}
       </div>
 
     </>
     // </MyApp>
-
   )
 }
