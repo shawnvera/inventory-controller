@@ -24,23 +24,25 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-class ProductFilteredViewSet(generics.ListAPIView):
+class CustomerProductFilteredViewSet(generics.ListAPIView):
     serializer_class = ProductSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    # filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
 
-    filterset_fields = ['id', 'name', 'customer']
-    search_fields = ['id', 'name', 'customer']
-    ordering_fields = ['id', 'name', 'customer']
+    # filterset_fields = ['id', 'name', 'customer']
+    # search_fields = ['id', 'name', 'customer']
+    # ordering_fields = ['id', 'name', 'customer']
 
     def get_queryset(self):
         """
         Optionally restricts the returned products to a given user,
-        by filtering against a `cust_id` query parameter in the URL.
+        by filtering against a `customer` query parameter in the URL.
         """
+        user = self.request.user
+        get_extra_actions = []
         queryset = Product.objects.all()
-        cust_id = self.request.query_params.get('cust_id')
-        if cust_id is not None:
-            queryset = queryset.filter(product__cust_id=cust_id)
+        customer = self.request.query_params.get('customer')
+        if customer is not None:
+            queryset = queryset.filter(customer=customer)
         return queryset
 
 class UserCreate(APIView):

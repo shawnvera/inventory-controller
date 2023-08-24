@@ -9,6 +9,7 @@ router = routers.DefaultRouter()
 router.register(r'inventory', ProductViewSet)
 router.register(r'user', UserViewSet)
 router.register(r'customer', CustomerViewSet)
+# router.register(r'filtered_prod', CustomerProductFilteredViewSet, basename='filtered_prod')
 
 urlpatterns = [
     path('user/signup/', UserCreate.as_view(), name="create_user"),
@@ -16,5 +17,6 @@ urlpatterns = [
     path('user/login/', jwt_views.TokenObtainPairView.as_view(), name='token_create'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('prod_filter/', CustomerProductFilteredViewSet.as_view(), name='prod_filter')
 ]
