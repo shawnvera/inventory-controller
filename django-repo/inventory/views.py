@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status, permissions, generics
 from rest_framework.response import Response
@@ -9,7 +9,7 @@ from rest_framework.decorators import action
 from .models import *
 from .serializers import *
 from django.db.models import Sum
-
+from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,6 +26,11 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 class ProductFilteredViewSet(generics.ListAPIView):
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+
+    filterset_fields = ['id', 'name', 'customer']
+    search_fields = ['id', 'name', 'customer']
+    ordering_fields = ['id', 'name', 'customer']
 
     def get_queryset(self):
         """
