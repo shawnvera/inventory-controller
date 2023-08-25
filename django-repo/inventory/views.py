@@ -16,6 +16,8 @@ class ProductDestroyView(generics.RetrieveDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    # def deleteItem(request):
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
