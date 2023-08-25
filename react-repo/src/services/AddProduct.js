@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export default async function AddProductData() {
-    let response = await axios.post(`http://127.0.0.1:8000/inventory/`);
+    let response = await axios.post(`http://127.0.0.1:8000/inventory/`, {
+        key1: 'value1',
+    });
     return response.data;
 };
