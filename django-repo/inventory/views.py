@@ -12,9 +12,17 @@ from django.db.models import Sum
 from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
+class ProductDestroyView(generics.RetrieveDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    # def perform_destroy(self, instance):
+
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
@@ -26,11 +34,10 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 class CustomerProductFilteredViewSet(generics.ListAPIView):
     serializer_class = ProductSerializer
-    # filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
 
-    # filterset_fields = ['id', 'name', 'customer']
-    # search_fields = ['id', 'name', 'customer']
-    # ordering_fields = ['id', 'name', 'customer']
+    def perform_destroy(self, instance):
+        instance.destroy()
+
 
     def get_queryset(self):
         """

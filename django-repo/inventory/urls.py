@@ -18,5 +18,6 @@ urlpatterns = [
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', include(router.urls)),
-    path('prod_filter/', CustomerProductFilteredViewSet.as_view(), name='prod_filter')
-]
+    path('prod_filter/', CustomerProductFilteredViewSet.as_view(), name='prod_filter'),
+    path('prod_destroy/<int:pk>/', ProductDestroyView.as_view(), name='product-delete')
+    ]
