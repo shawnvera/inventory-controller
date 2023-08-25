@@ -12,8 +12,13 @@ import Form from 'react-bootstrap/Form';
 
 
 export default function ProductInfo() {
+  // state to remember products.
   const [state, setState] = useState([]);
 
+  // state to remember the item id to be used for deletion axios call.
+  const [deleteID, setDeleteID] = useState(null);
+
+  // useEffect to GET filtered customer data for products.
   useEffect(() => {
     const fetchData = async () => {
       const data = await GetCustomerProductFilteredInventoryData();
@@ -23,12 +28,18 @@ export default function ProductInfo() {
     return () => { }
   }, [])
 
-  let ID;
 
-  function handleDeleteClick() {
-    DeleteProduct(ID);
-    window.location.reload();
+  // useEffect to run the delete of a product if the value of deleteID has been changed from null.
+  useEffect(() => {
+    if (deleteID !== null) {
+      DeleteProduct(deleteID); 
+      window.location.reload();
+    } 
+  }, [deleteID])
 
+  // function to handle the click of the delete button for product.
+  const handleDeleteClick = (e) => {
+    setDeleteID(e.target.value);
   }
 
   return (
@@ -38,15 +49,23 @@ export default function ProductInfo() {
           let ID;
           return (
             <>
-              <ListGroup as="ol" numbered>
+              <ListGroup as="ul">
                 <ListGroup.Item as="li" key={index} className="d-flex justify-content-between align-items-start">
                   <div className="ms-2 me-auto">
                     <div className="fw-bold">{item.name}</div>
                     {item.description}
                   </div>
                   <br />
+                  {/* <div className="container-fluid">
+                    <div className="row-md-6">
+                      <div className="col-md-3"> */}
                   <Form.Control className="text-center" size="sm" type="number" placeholder={item.quantity} />
-                    <button onClick={()=>console.log(item.id)}>Delete</button>
+                  <CloseButton type="button" onClick={(e)=>handleDeleteClick(e)} value={item.id}/>
+                  {/* <div className="col-md-1">
+                  </div>
+                  </div>
+                  </div>
+                  </div> */}
                 </ListGroup.Item>
                 </ListGroup>
               </>
