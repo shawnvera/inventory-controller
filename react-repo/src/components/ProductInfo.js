@@ -25,7 +25,7 @@ export default function ProductInfo() {
 
   let ID;
 
-  function handleDeleteClick(ID) {
+  function handleDeleteClick() {
     DeleteProduct(ID);
     window.location.reload();
 
@@ -46,7 +46,7 @@ export default function ProductInfo() {
                   </div>
                   <br />
                   <Form.Control className="text-center" size="sm" type="number" placeholder={item.quantity} />
-                    <button onClick={()=>{handleDeleteClick(ID)}}>Delete</button>
+                    <button onClick={()=>console.log(item.id)}>Delete</button>
                 </ListGroup.Item>
                 </ListGroup>
               </>
