@@ -10,20 +10,28 @@ from .models import *
 from .serializers import *
 from django.db.models import Sum
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.decorators import api_view, permission_classes
+
 # Create your views here.
 
-class ProductDestroyView(generics.RetrieveDestroyAPIView):
+class ProductDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    # def deleteItem(request):
+@api_view(['PUT'])
+def modify_item(request):
+    if request.method == "PUT":
+        user=request.user
+        item_id=request.data.get('id')
+        product = Product.objects.get(id=item_id)
+        product.quantity = request.data.get('quantity')
+        product.save()
+    return Response({'message': 'Quantity was updated'}, status=status.HTTP_201_CREATED)
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-    # def perform_destroy(self, instance):
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -70,3 +78,8 @@ class UserDetail(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = User.objects.all()
     serializer_class = CustomUserSerializer
+
+
+# class ProductUpdateViewSet(generics.UpdateAPIView):
+#     queryset = Product.objects.all()
+#     serializer_class = ProductUpdateSerializer
