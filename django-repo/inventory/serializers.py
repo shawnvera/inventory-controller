@@ -35,3 +35,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+# class ProductUpdateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Product
+#         fields = ['quantity']
