@@ -34,6 +34,7 @@ export default function ProductInfo() {
   useEffect(() => {
     if (deleteID !== null) {
       DeleteProduct(deleteID);
+      alert("Are you sure?")
       window.location.reload();
     }
   }, [deleteID])
