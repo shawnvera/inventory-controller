@@ -6,7 +6,7 @@ import { Component } from 'react';
 export default function ProdList() {
     return (
         <>
-            <div>
+            <div className='bg-light bg-darken-xl'>
                 <Header />
                 <Buttons />
                 <ProductInfo />
