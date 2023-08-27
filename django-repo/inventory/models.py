@@ -21,7 +21,6 @@ class Customer(models.Model):
     address = models.CharField(max_length=100)
     notes = models.CharField(max_length=140)
     creation_date = models.DateTimeField(default=None, null = True)
-    # 0ne to one reference possible change many to OneToOneField
     customuser = models.ManyToManyField('CustomUser', default=None)
 
 class Product(models.Model):
