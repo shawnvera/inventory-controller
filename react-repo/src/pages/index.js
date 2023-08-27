@@ -1,29 +1,33 @@
 'use client'
 
-import Link from "next/link";
-import { React, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
-// import 'bootstrap.bundle.min.js';
+import { React } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ProductInfo from '../components/ProductInfo';
 import Header from '../components/Header';
-import Buttons from '../components/Buttons';
-import NavBar from '../components/Navbar';
 import LoginButton from "../components/LoginButton";
 
 export default function Page() {
   return (
     // <MyApp>
     <>
-      <div className="container-flex">
-        <Header />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <div id="myapp" className="container-fluid text-center">
+        <div className="row text-center">
+          <div className="col-md-4"></div>
+          <div className="col-md-4">
 
-        <LoginButton />
+            <Header />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <LoginButton />
+            <div className="col-md-4">
+
+            
+            </div>
+          </div>
+        </div>
       </div>
 
     </>

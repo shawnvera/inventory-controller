@@ -1,9 +1,6 @@
-import Link from "next/link";
 import { useState, useEffect } from 'react';
 import GetInventoryData from "../services/DataInventory";
-import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
-import GetCustomerProductFilteredInventoryData from "../services/CustomerProductFilteredInventory";
 import CloseButton from 'react-bootstrap/CloseButton';
 import axios from 'axios';
 import DeleteProduct from "../services/DeleteProduct";
@@ -14,7 +11,10 @@ export default function ProductInfo() {
   // state to remember products.
   const [state, setState] = useState([]);
 
+  // set state for quantity.
   const [quantity, setQuantity] = useState(null);
+  
+  // set state for item object.
   const [item, setItem] = useState({});
 
   // state to remember the item id to be used for deletion axios call.
@@ -30,7 +30,6 @@ export default function ProductInfo() {
     return () => { }
   }, [])
 
-
   // useEffect to run the delete of a product if the value of deleteID has been changed from null.
   useEffect(() => {
     if (deleteID !== null) {
@@ -44,6 +43,7 @@ export default function ProductInfo() {
     setDeleteID(e.target.value);
   }
 
+  // async function to handle the PUT request when a quantity is updated.
   const handleUpdate = async (e) => {
     const headers = authHeader()
     let formField = new FormData()
@@ -59,12 +59,14 @@ export default function ProductInfo() {
     })
   }
 
+  // function to handle the "ENTER" button press when quantity is updated.
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleUpdate();
     }
   }
 
+  // generic function to set the item object in state when quantity is updated.
   const newFunc = (id, qty) => {
     setItem({
       id: id,
@@ -74,30 +76,38 @@ export default function ProductInfo() {
 
   return (
     <>
-      {state.length > 0 ?
-        state.map((item, index) => {
-          return (
-            <>
-              <ListGroup as="ul">
-                <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
-                  <div className="ms-2 me-auto">
-                    <div className="fw-bold" key={index}>{item.name}</div>
-                    {item.description}
+      <div className="container-fluid">
+        <div className="row">
+          <div className='col-md-2'></div>
+          {state.length > 0 ?
+            state.map((item, index) => {
+              return (
+                <>
+                  <div className="col-md-8 m-3" data-spy="scroll">
+                    <ListGroup as="ul">
+                      <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
+                        <div className="ms-2 me-auto">
+                          <div className="fw-bold" key={index}>{item.name}</div>
+                          {item.description}
+                        </div>
+                        <br />
+
+                        <Form.Control className="w-50 text-center" size="sm" type="number" placeholder={item.quantity}
+                          onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => newFunc(item.id, e.target.value)} />
+
+                        <CloseButton type="button" onClick={(e) => handleDeleteClick(e)} value={item.id} />
+
+                      </ListGroup.Item>
+                    </ListGroup>
                   </div>
-                  <br />
-
-                  <Form.Control className="text-center" size="sm" type="number" placeholder={item.quantity}
-                    onKeyDown={(e) => handleKeyDown(e)} onChange={(e) => newFunc(item.id, e.target.value)} />
-
-                  <CloseButton type="button" onClick={(e) => handleDeleteClick(e)} value={item.id} />
-
-                </ListGroup.Item>
-              </ListGroup>
-            </>
-          )
-        })
-        : <p>There are no products for this customer.</p>
-      }
+                  <div className='col-md-2'></div>
+                </>
+              )
+            })
+            : <p>There are no products for this customer.</p>
+          }
+        </div>
+      </div>
     </>
   )
 }
