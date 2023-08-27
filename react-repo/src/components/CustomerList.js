@@ -6,10 +6,14 @@ import { useRouter } from 'next/navigation';
 import ProdList from '../pages/prod_list';
 
 export default function CustomerList() {
-    const [state, setState] = useState([]);
-    const router = useRouter();
-    // const [customerProducts, setCustomerProducts] = useState([]);
 
+    // setting state.
+    const [state, setState] = useState([]);
+
+    // router to push to others pages.
+    const router = useRouter();
+
+    // useEffect to call Axios to get customer data.
     useEffect(() => {
         const fetchData = async () => {
             const data = await GetCustomerData();
@@ -19,6 +23,7 @@ export default function CustomerList() {
         return () => { }
     }, [])
 
+    // pushes to the product list page.
     function handleEvent(e) {
         router.push('/prod_list')
     }
@@ -26,12 +31,12 @@ export default function CustomerList() {
     return (
         <>
             <div className="Container-fluid">
-                {state.length > 0 ?
-                    state.map((item, index) => {
-                        return (
-                            <>
-                                <div key={index} className="row">
-                                    <div className="col-md-3">
+                <div className="row">
+                    {state.length > 0 ?
+                        state.map((item, index) => {
+                            return (
+                                <>
+                                    <div key={index} className="col-md-3 m-3">
                                         <Card style={{ width: '12rem' }}>
                                             <Card.Body>
                                                 <Card.Title>{item.name}</Card.Title>
@@ -39,14 +44,14 @@ export default function CustomerList() {
                                                 <Button variant="primary" onClick={handleEvent}>View Inventory</Button>
                                             </Card.Body>
                                         </Card>
-                                    </div >
-                                </div>
-                            </>
+                                    </div>
+                                </>
+                            )
+                        }
                         )
+                        : <p>Please refresh page.</p>
                     }
-                    )
-                    : <p>Please refresh page.</p>
-                }
+                </div >
             </div>
         </>
     )

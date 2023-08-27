@@ -7,3 +7,7 @@
     height: 100vh;
     font-family:'Courier New', Courier, monospace;
 }
+
+.myapp {
+    background-color: grey !important;
+}

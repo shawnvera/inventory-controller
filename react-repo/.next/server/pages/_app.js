@@ -18,7 +18,7 @@ exports.modules = {
   \**************************************/
 /***/ ((module) => {
 
-eval("// Exports\nmodule.exports = {\n\t\"myGlobalStyles\": \"global_myGlobalStyles__fsnLl\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvc3R5bGVzL2dsb2JhbC5tb2R1bGUuY3NzIiwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vc3JjL3N0eWxlcy9nbG9iYWwubW9kdWxlLmNzcz85ZDY2Il0sInNvdXJjZXNDb250ZW50IjpbIi8vIEV4cG9ydHNcbm1vZHVsZS5leHBvcnRzID0ge1xuXHRcIm15R2xvYmFsU3R5bGVzXCI6IFwiZ2xvYmFsX215R2xvYmFsU3R5bGVzX19mc25MbFwiXG59O1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/styles/global.module.css\n");
+eval("// Exports\nmodule.exports = {\n\t\"myGlobalStyles\": \"global_myGlobalStyles__fsnLl\",\n\t\"myapp\": \"global_myapp__kIdLt\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvc3R5bGVzL2dsb2JhbC5tb2R1bGUuY3NzIiwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2dsb2JhbC5tb2R1bGUuY3NzPzlkNjYiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gRXhwb3J0c1xubW9kdWxlLmV4cG9ydHMgPSB7XG5cdFwibXlHbG9iYWxTdHlsZXNcIjogXCJnbG9iYWxfbXlHbG9iYWxTdHlsZXNfX2ZzbkxsXCIsXG5cdFwibXlhcHBcIjogXCJnbG9iYWxfbXlhcHBfX2tJZEx0XCJcbn07XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/styles/global.module.css\n");
 
 /***/ }),
 

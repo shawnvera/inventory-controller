@@ -3,16 +3,17 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import axios from "axios";
 
-export default function Buttons() { 
+export default function Buttons() {
+    // setting useStates
     const [show, setShow] = useState(false);
     const [name, setName] = useState(null);
     const [description, setDescription] = useState(null);
     const [quantity, setQuantity] = useState(null);
     const [customer, setCustomer] = useState(null);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    // function to handle the click on add. Setting formField variable with user input, and making the Axios call.
     const handleAddClick = async (e) => {
         let formField = new FormData()
 
@@ -32,6 +33,7 @@ export default function Buttons() {
 
     return (
         <>
+        <div className='container-fluid text-center'>
             <Button variant="primary" onClick={handleShow}>
                 Add a product.
             </Button>
@@ -78,16 +80,19 @@ export default function Buttons() {
                                 onChange={(e) => setCustomer(e.target.value)} />
                         </div>
                     </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                        <Button variant="primary" onClick={handleAddClick}>
-                            Save Changes
-                        </Button>
-                    </Modal.Footer>
-                    </Modal>
-                    </>
-                    )
-                    };
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleAddClick}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            </div>
+            <br />
+            <br />
+        </>
+    )
+};
