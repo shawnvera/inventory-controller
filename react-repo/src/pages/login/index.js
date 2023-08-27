@@ -45,6 +45,7 @@ function Page() {
                             type="text"
                             id="username"
                             name="username"
+                            autoComplete="current-username"
                             onChange={(e) => setUsername(e.target.value)}
                             required
                         />
@@ -68,6 +69,7 @@ function Page() {
                             id="pass"
                             name="password"
                             minLength="8"
+                            autoComplete="current-password"
                             required
                             onChange={(e) => setPassword(e.target.value)}
                         />
