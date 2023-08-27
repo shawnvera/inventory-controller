@@ -13,7 +13,7 @@ export default function ProductInfo() {
 
   // set state for quantity.
   const [quantity, setQuantity] = useState(null);
-  
+
   // set state for item object.
   const [item, setItem] = useState({});
 
@@ -88,7 +88,7 @@ export default function ProductInfo() {
                     <ListGroup as="ul">
                       <ListGroup.Item as="li" className="d-flex justify-content-between align-items-start">
                         <div className="ms-2 me-auto">
-                          <div className="fw-bold" key={index}>{item.name}</div>
+                          <div className="fw-bold">{item.name}</div>
                           {item.description}
                         </div>
                         <br />

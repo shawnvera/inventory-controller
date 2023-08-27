@@ -36,9 +36,9 @@ export default function CustomerList() {
                         state.map((item, index) => {
                             return (
                                 <>
-                                    <div key={index} className="col-md-3 m-3">
+                                    <div key={item.id} className="col-md-3 m-3">
                                         <Card style={{ width: '12rem' }}>
-                                            <Card.Body>
+                                            <Card.Body key={item.id}>
                                                 <Card.Title>{item.name}</Card.Title>
                                                 <Card.Text>{item.description}</Card.Text>
                                                 <Button variant="primary" onClick={handleEvent}>View Inventory</Button>
