@@ -1,9 +1,9 @@
+# Inventory Controller #
+## Iteration 1 ##
 
-
-## Setup
-- After creating your own repo from the template, create a local copy either with the Github CLI tool (recommended) or a git clone.
-- Make sure you have Docker Desktop downloaded and running
-- Open VScode and install the [Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-- Open your repo in VScode, after a few moments you should see a prompt from VScode asking if you want to reopen the repo in a dev container, follow the prompt to do so. If you are not prompted, you can click the remote connection icon in the bottom left corner and select 'Reopen in Container'
-- Once the container is built, click the SQL tools extension to establish your database connection. All required fields, including password, are 'postgres'.
-- Proceed to set up your file structure per Project document.
+1. Login to the inventory controller with the username and password given to you by the admin.
+2. Select a customer account.
+3. Add products by clicking "Add a Product" button.
+4. Enter details about the product, then select "save changes".
+5. Product can be updated by just typing the new quantity over the current quantity and pressing the "return/enter" key.
+6. Product can be deleted by clicking the "X" icon, then clicking "ok" on the alert box.
