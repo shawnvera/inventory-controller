@@ -53,7 +53,7 @@ export default function ProductInfo() {
 
     await axios({
       method: 'put',
-      url: `http://127.0.0.1:8000/prod_update/`,
+      url: `https://capstone-inventory-controller.ue.r.appspot.com/prod_update/`,
       data: item,
       headers: headers
     }).then((response) => {

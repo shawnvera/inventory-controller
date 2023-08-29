@@ -24,7 +24,7 @@ export default function Buttons() {
 
         await axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/inventory/',
+            url: 'https://capstone-inventory-controller.ue.r.appspot.com/inventory/',
             data: formField
         }).then((response) => {
             window.location.reload();

@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default async function GetCustomerData() {
-    let response = await axios.get(`http://127.0.0.1:8000/customer/`);
+    let response = await axios.get(`https://capstone-inventory-controller.ue.r.appspot.com/customer/`);
     return response.data;
 };
